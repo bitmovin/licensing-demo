@@ -8,10 +8,10 @@ To do that you have to enable third-party-license-checking, specify an API path 
 Your license server is called by a HTTP/POST request with the following payload:
 
 {
-    "domain":"dummydomain.com"
-    "key": "your_bitdash_licensekey",
-    "version": "bitdash_version",
-    "customData":{"thirdPartyKey":"key1","param2":"data2"}
+	"domain":"dummydomain.com"
+	"key": "your_bitdash_licensekey",
+	"version": "bitdash_version",
+	"customData":{"thirdPartyKey":"key1","param2":"data2"}
 }
 
 The content of the "customData" field is specified by yourself in the bitdash player configuration. It is an array of key/value pairs of type Object.
