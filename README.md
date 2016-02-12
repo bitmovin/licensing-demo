@@ -11,7 +11,7 @@ Your license server is called by a HTTP/POST request with the following payload:
 	"domain":"dummydomain.com",<br>
 	"key": "your_bitdash_licensekey",<br>
 	"version": "bitdash_version",<br>
-	"customData":{"thirdPartyKey":"key1","param2":"data2"}<br>
+	"customData":{"thirdPartyKey":"key1", "param2":"data2"}<br>
 }
 
 The content of the "customData" field is specified by yourself in the bitdash player configuration. It is an array of key/value pairs of type Object.
@@ -19,7 +19,7 @@ The content of the "customData" field is specified by yourself in the bitdash pl
 Response-codes:
 The license of a bitdash player is allowed/denied based on the following HTTP response codes of your licensing server:
 
-HTTP code 2xx -> allow license
-HTTP code 4xx -> deny license
-HTTP code 5xxx -> allow/deny based on datastore configuration
+HTTP code 2xx -> allow license<br>
+HTTP code 4xx -> deny license<br>
+HTTP code 5xxx -> allow/deny based on datastore configuration<br>
 
