@@ -8,10 +8,10 @@ To do that you have to enable third-party-license-checking, specify an API path 
 Your license server is called by a HTTP/POST request with the following payload:
 
 {<br>
-<span style="margin-left:20px;"></span>"domain":"dummydomain.com",<br>
-<span style="margin-left:20px;"></span>"key": "your_bitdash_licensekey",<br>
-<span style="margin-left:20px;"></span>"version": "bitdash_version",<br>
-<span style="margin-left:20px;"></span>"customData":{"thirdPartyKey":"key1", "param2":"data2"}<br>
+   "domain":"dummydomain.com",<br>
+   "key": "your_bitdash_licensekey",<br>
+   "version": "bitdash_version",<br>
+   "customData":{"thirdPartyKey":"key1", "param2":"data2"}<br>
 }
 
 The content of the "customData" field is specified by yourself in the bitdash player configuration. It is an array of key/value pairs of type Object which is passed through to your licensing server.
@@ -26,11 +26,11 @@ HTTP code 5xxx -> allow/deny based on datastore configuration<br>
 
 To make sure the bitdash player always gets a license decision there have to be two default actions configurated.
 
-1) Default response on timeout (ALLOW/DENY)
-   Allows or denies a bitdash license if the response time exeeds your configurated timeout (default is 200ms).
+1) Default response on timeout (ALLOW/DENY)<br>
+Allows or denies a bitdash license if the response time exeeds your configurated timeout (default is 200ms).
 
-2) Default response on server error (ALLOW/DENY)
-   Allows or denies a bitdash license if the bitdash licensing server receivs a HTTP code 5xx.
+2) Default response on server error (ALLOW/DENY)<br>
+Allows or denies a bitdash license if the bitdash licensing server receivs a HTTP code 5xx.
 
 The HTTP response of your licensing server can have a "customData" field just as the HTTP call which is passed
 through to the bitdash player.
