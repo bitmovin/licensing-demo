@@ -3,6 +3,7 @@ package com.bitmovin.bitdash.licensing.servlets;
 import com.bitmovin.bitdash.licensing.requests.LicenseRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,7 @@ public class LicensingServerServlet extends HttpServlet
 
             String thirdPartyKey = (String)licenseRequest.getCustomData().get("thirdPartyKey");
 
-            if(getLicenses().containsKey(thirdPartyKey))
+            if(!getLicenses().containsKey(thirdPartyKey))
             {
                 customData.put("param1", "data1");
                 sendDenyResponse(response, customData);
