@@ -23,7 +23,6 @@ public class LicensingServerServlet extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         LicenseRequest licenseRequest;
-        int httpCode;
         boolean allowLicense;
         Map<Object, Object> customData = new HashMap<>();
 
@@ -35,48 +34,58 @@ public class LicensingServerServlet extends HttpServlet
 
             if(getLicenses().containsKey(thirdPartyKey))
             {
-                allowLicense = getLicenses().get(thirdPartyKey);
-
-                if (allowLicense)
-                {
-                    httpCode = 200;
-                    customData.put("message", "Licensekey was approved.");
-                    customData.put("param1", "data1");
-                }
-                else
-                {
-                    httpCode = 400;
-                    customData.put("message", "Licensekey was denied.");
-                    customData.put("param1", "data1");
-                }
-            }
-            else
-            {
-                httpCode = 400;
-                customData.put("message", "Licensekey was not found.");
                 customData.put("param1", "data1");
+                sendDenyResponse(response, customData);
+                return;
             }
 
-            sendResponse(response,httpCode,customData);
+            allowLicense = getLicenses().get(thirdPartyKey);
+
+            if (!allowLicense)
+            {
+                customData.put("param1", "data1");
+                sendDenyResponse(response, customData);
+                return;
+            }
+
+            customData.put("param1", "data1");
+            sendAllowResponse(response, customData);
         }
         catch (Exception e)
         {
             customData = new HashMap<>();
-            customData.put("message",e.getMessage());
             customData.put("param1", "data1");
 
-            sendResponse(response, 500, customData);
+            sendErrorResponse(response, customData, e.getMessage());
         }
     }
 
-    private void sendResponse(HttpServletResponse response, int httpCode, Map<Object, Object> customData) throws IOException
+    private void sendAllowResponse(HttpServletResponse response, Map<Object, Object> customData) throws IOException
     {
-        response.setStatus(httpCode);
+        customData.put("message", "Licensekey was approved.");
+        response.setStatus(200);
         response.setContentType("application/json");
 
         response.getWriter().write(gson.toJson(customData));
     }
 
+    private void sendDenyResponse(HttpServletResponse response, Map<Object, Object> customData) throws IOException
+    {
+        customData.put("message", "Licensekey was denied.");
+        response.setStatus(400);
+        response.setContentType("application/json");
+
+        response.getWriter().write(gson.toJson(customData));
+    }
+
+    private void sendErrorResponse(HttpServletResponse response, Map<Object, Object> customData, String error) throws IOException
+    {
+        customData.put("message", error);
+        response.setStatus(500);
+        response.setContentType("application/json");
+
+        response.getWriter().write(gson.toJson(customData));
+    }
     private Map<String, Boolean> getLicenses()
     {
         Map<String, Boolean> licenses = new HashMap<>();
@@ -87,3 +96,4 @@ public class LicensingServerServlet extends HttpServlet
         return licenses;
     }
 }
+
