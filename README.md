@@ -1,5 +1,7 @@
 # 3rd Party Bitmovin Player Licensing
 
+![Overview Diagram](https://github.com/bitmovin/licensing-demo/blob/master/3rdPartyLicensingDiagram.png)
+
 ### This is a simple implementation of a 3rd party licensing server which demonstrates the usage in combination with the Bitmovin Adaptive Streaming Player and our backend application.
 
 If a player instance has third-party-license-checking enabled all license calls are passed to a specified 3rd party license server.
