@@ -6,16 +6,17 @@ If a player instance has third-party-license-checking enabled all license calls 
 To enable third-party-license-checking, simply specify an API path which implements a certain structure described below, a timeout which tells our backend application how long to wait for the 3rd party license server to respond and some default actions which specify what to do if an error or timeout occurs.
 
 The 3rd party license server is called by a HTTP/POST request with the following payload:
-
-{<br>
-   "domain"    :"dummydomain.com",<br>
-   "key"       : "your_player_licensekey",<br>
-   "version"   : "player_version",<br>
-   "customData": {<br>
-     "thirdPartyKey" :"key1",<br> 
-     "param2"        :"data2"<br>
-   }<br>
+```json
+{
+   "domain"    :"dummydomain.com",
+   "key"       : "your_player_licensekey",
+   "version"   : "player_version",
+   "customData": {
+     "thirdPartyKey" :"key1",
+     "param2"        :"data2"
+   }
 }
+```
 
 The content of the 'customData' field can be of arbitrary and is specified in the player configuration. It's structure is designed as an array of key/value pairs of type 'Object' which is passed through to the 3rd party licensing server.
 
