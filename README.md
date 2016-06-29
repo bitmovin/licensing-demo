@@ -41,3 +41,4 @@ Allows or denies a license if the Bitmovin backend application receives a HTTP c
 The HTTP response of the 3rd party licensing server can have a "customData" field just as the HTTP call which is passed
 through to the player.
    
+### More information about the 3rd party licensing and the player configuration and API in general, can be found in our [online documentation](https://bitmovin.com/player-documentation/).
