@@ -32,8 +32,8 @@ HTTP code 4xx -> deny license<br>
 HTTP code 5xx -> allow or deny based on configured failure action<br>
 
 
-To make sure the player gets a license decision in any case, a failure action has to be configured. The failure action specifies whether Bitmovin's licensing backend should either ALLOW or DENY a license in case the 3rd party licensing server returns a 5xx HTTP error code or the request times out. The 3rd party licensing server is called with a default timeout of 1000ms.
+To make sure the player gets a license decision in any case, a failure action has to be configured. The failure action specifies whether Bitmovin's licensing backend should either allow or deny a license in case the 3rd party licensing server returns a 5xx HTTP error code or the request times out. A timeout happens when the 3rd party licensing server does not respond within 1000ms to a license call.
 
-The HTTP response of the 3rd party licensing server can have a "customData" field just as the HTTP call which is passed through to the player.
-   
+The HTTP response of the 3rd party licensing server can contain a "customData" field which is passed through to the player.
+
 ### More information about the 3rd party licensing and the player configuration and API in general, can be found in our [online documentation](https://developer.bitmovin.com/playback).
