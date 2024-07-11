@@ -62,7 +62,7 @@ public class LicensingServerServlet extends HttpServlet
 
     private void sendAllowResponse(HttpServletResponse response, Map<Object, Object> customData) throws IOException
     {
-        customData.put("message", "Licensekey was approved.");
+        customData.put("message", "License key was approved.");
         response.setStatus(200);
         response.setContentType("application/json");
 
@@ -71,7 +71,7 @@ public class LicensingServerServlet extends HttpServlet
 
     private void sendDenyResponse(HttpServletResponse response, Map<Object, Object> customData) throws IOException
     {
-        customData.put("message", "Licensekey was denied.");
+        customData.put("message", "License key was denied.");
         response.setStatus(400);
         response.setContentType("application/json");
 
